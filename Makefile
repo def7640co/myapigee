@@ -14,7 +14,9 @@ dep-branch:
 
 dep-version:
 	@$(MAKE) -C client dep-version sdk=$(sdk)
+	@cat discovery/go.mod
 	@$(MAKE) -C discovery dep-version sdk=$(sdk)
+	@cat discovery/go.mod
 	@$(MAKE) -C traceability dep-version sdk=$(sdk)
 
 dep-sdk: 
