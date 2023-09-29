@@ -9,7 +9,7 @@ jobs:
       GOWORK: "off"
     defaults:
       run:
-        working-directory: ${{ env.GOPATH }}
+        working-directory: .
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
