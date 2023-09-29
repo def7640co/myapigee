@@ -23,5 +23,5 @@ jobs:
         working-directory: discovery
         run: |
           cat go.mod
-          make dep-version sdk=1.1.60 da=master
+          make dep-version sdk=v1.1.60 da=master
           cat go.mod
