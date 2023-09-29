@@ -19,7 +19,9 @@ jobs:
         with:
           go-version: 1.21
 
-      - name: Build discovery agent
+      - name: Update SDK version
         working-directory: discovery
         run: |
-          echo "yipeeeeee"
+          cat go.mod
+          make dep-version sdk=1.1.60 da=master
+          cat go.mod
