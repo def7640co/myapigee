@@ -18,12 +18,19 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: 1.21
+      - name: Get SDK version
+        run: |
+          export LATEST_REMOTE_TAG_CMD="git ls-remote --tags --refs --sort='version:refname' REMOTE_REPO | grep -Eo 'v?[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,3}$' | tail -1"
+          REMOTE_REPO_PATH="https://github.com/Axway/agent-sdk"
+          CMD=${LATEST_REMOTE_TAG_CMD/"REMOTE_REPO"/${REMOTE_REPO_PATH}}
+          export SDK_VERSION=$(eval $CMD)
+          echo "SDK version ${SDK_VERSION}"
 
       - name: Update SDK version
         working-directory: .
         run: |
           cat discovery/go.mod
-          make dep-version sdk=v1.1.60 da=master
+          make dep-version sdk=v1.1.60
           cat discovery/go.mod
 
       - name: Push
