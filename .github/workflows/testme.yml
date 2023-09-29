@@ -25,3 +25,10 @@ jobs:
           cat discovery/go.mod
           make dep-version sdk=v1.1.60 da=master
           cat discovery/go.mod
+
+      - name: Push
+        working-directory: .
+        run: |
+          git add -A
+          git commit -m "INT - Update Dependencies"
+          git push origin main
