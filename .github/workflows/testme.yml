@@ -36,7 +36,7 @@ jobs:
         working-directory: .
         run: |
           cat discovery/go.mod
-          make dep-version sdk=v1.1.60
+          make dep-version sdk=v1.1.61
           cat discovery/go.mod
 
       - name: Push
