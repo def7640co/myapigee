@@ -38,7 +38,7 @@ jobs:
           CMD=${LATEST_REMOTE_TAG_CMD/"REMOTE_REPO"/${REMOTE_REPO_PATH}}
           export SDK_VERSION=$(eval $CMD)
           echo "SDK version ${SDK_VERSION}"
-          echo "SDK_VERSION >> $GITHUB_ENV
+          echo "SDK_VERSION=${SDK_VERSION} >> $GITHUB_ENV
       - name: Update SDK version
         working-directory: .
         run: |
