@@ -65,3 +65,8 @@ jobs:
           commit-message: 'Update to SDK ${{ env.SDK_VERSION }}'
           title: 'APIGOV-00000 - Update to SDK ${{ env.SDK_VERSION }}'
           delete-branch: true
+
+      - uses: peter-evans/enable-pull-request-automerge@v3
+        with:
+          # token: ${{ secrets.PAT }}
+          pull-request-number: 1
