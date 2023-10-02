@@ -18,11 +18,11 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: 1.21
-      - name: Configure git
-        run: |
-          git config --global user.email "builder-lphxmjtnt11@axway.com"
-          git config --global user.name "builder-lphxmjtnt11"
-          git config --global push.followTags true
+      # - name: Configure git
+      #   run: |
+      #     git config --global user.email "builder-lphxmjtnt11@axway.com"
+      #     git config --global user.name "builder-lphxmjtnt11"
+      #     git config --global push.followTags true
 
       - name: Create branch
         uses: peterjgrainger/action-create-branch@v2.4.0
@@ -46,11 +46,20 @@ jobs:
           make dep-version sdk=v1.1.61
           cat discovery/go.mod
 
-      - name: Add and commit
-        uses: EndBug/add-and-commit@v9
+      # - name: Add and commit
+      #   uses: EndBug/add-and-commit@v9
+      #   with:
+      #     author_email: builder-lphxmjtnt11@axway.com
+      #     author_name: builder-lphxmjtnt11
+      #     new_branch: APIGOV-00000
+      #     message: 'Update to SDK ${SDK_VERSION}'
+      #     push: true
+
+      - name: Create Pull Request
+         uses: peter-evans/create-pull-request@v5.0.2
         with:
-          author_email: builder-lphxmjtnt11@axway.com
-          author_name: builder-lphxmjtnt11
-          new_branch: APIGOV-00000
-          message: 'Update to SDK ${SDK_VERSION}'
+          branch: APIGOV-00000
+          commit-message: 'Update to SDK ${SDK_VERSION}'
+          title: 'APIGOV-00000 - Update to SDK ${SDK_VERSION}'
+          delete-branch: true
           push: true
