@@ -62,6 +62,7 @@ jobs:
         uses: peter-evans/create-pull-request@v5.0.2
         with:
           author: builder-lphxmjtnt11 <builder-lphxmjtnt11@axway.com>
+          committer: dfeldick <dfeldick@axway.com>
           branch: APIGOV-00000
           commit-message: 'Update to SDK ${{ env.SDK_VERSION }}'
           title: 'APIGOV-00000 - Update to SDK ${{ env.SDK_VERSION }}'
@@ -72,12 +73,13 @@ jobs:
           # token: ${{ secrets.PAT }}
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
 
-      # - name: Approve Pull Request
-      #   uses: juliangruber/approve-pull-request-action@v2.0.0
-      #   with:
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
-      #     number: ${{ steps.cpr.outputs.pull-request-number }}
+      - name: Approve Pull Request
+        uses: juliangruber/approve-pull-request-action@v2.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ steps.cpr.outputs.pull-request-number }}
           # repo: juliangruber/approve-pull-request-action # optional          
+
       - name: Merge Pull Request
         uses: juliangruber/merge-pull-request-action@v1
         with:
