@@ -38,11 +38,13 @@ jobs:
           CMD=${LATEST_REMOTE_TAG_CMD/"REMOTE_REPO"/${REMOTE_REPO_PATH}}
           export SDK_VERSION=$(eval $CMD)
           echo "SDK version ${SDK_VERSION}"
-
+          echo "SDK_VERSION >> $GITHUB_ENV
       - name: Update SDK version
         working-directory: .
         run: |
           cat discovery/go.mod
+          echo "SDK_VERSION is ${SDK_VERSION}"
+          echo "SDK_VERSION is ${{ env.SDK_VERSION }}"
           make dep-version sdk=v1.1.61
           cat discovery/go.mod
 
@@ -58,8 +60,8 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5.0.2
         with:
+          author: builder-lphxmjtnt11 <builder-lphxmjtnt11@axway.com>
           branch: APIGOV-00000
-          commit-message: 'Update to SDK ${SDK_VERSION}'
-          title: 'APIGOV-00000 - Update to SDK ${SDK_VERSION}'
+          commit-message: 'Update to SDK ${{ env.SDK_VERSION }}'
+          title: 'APIGOV-00000 - Update to SDK ${{ env.SDK_VERSION }}'
           delete-branch: true
-          push: true
