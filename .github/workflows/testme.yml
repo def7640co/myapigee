@@ -58,6 +58,7 @@ jobs:
       #     push: true
 
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v5.0.2
         with:
           author: builder-lphxmjtnt11 <builder-lphxmjtnt11@axway.com>
@@ -69,4 +70,4 @@ jobs:
       - uses: peter-evans/enable-pull-request-automerge@v3
         with:
           # token: ${{ secrets.PAT }}
-          pull-request-number: 1
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
