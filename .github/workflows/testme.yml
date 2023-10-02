@@ -51,6 +51,6 @@ jobs:
         with:
           author_email: builder-lphxmjtnt11@axway.com
           author_name: builder-lphxmjtnt11
-          new-branch: APIGOV-00000
+          new_branch: APIGOV-00000
           message: 'Update to SDK ${SDK_VERSION}'
           push: true
