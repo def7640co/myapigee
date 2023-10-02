@@ -78,7 +78,7 @@ jobs:
           git config --global user.name "dfeldick"
 
       - name: Approve Pull Request
-        uses: juliangruber/approve-pull-request-action@v2.0.0
+        uses: juliangruber/approve-pull-request-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           number: ${{ steps.cpr.outputs.pull-request-number }}
