@@ -18,11 +18,19 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: 1.21
-      - name: Configure git
-        run: |
-          git config --global user.email "builder-lphxmjtnt11@axway.com"
-          git config --global user.name "builder-lphxmjtnt11"
-          git config --global push.followTags true
+      # - name: Configure git
+      #   run: |
+      #     git config --global user.email "builder-lphxmjtnt11@axway.com"
+      #     git config --global user.name "builder-lphxmjtnt11"
+      #     git config --global push.followTags true
+
+      - name: Create branch
+        uses: peterjgrainger/action-create-branch@v2.4.0
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branch: 'APIGOV-00000'
+          # sha: '${{ github.event.pull_request.head.sha }}'
 
       - name: Get SDK version
         run: |
@@ -39,9 +47,16 @@ jobs:
           make dep-version sdk=v1.1.61
           cat discovery/go.mod
 
-      - name: Push
-        working-directory: .
-        run: |
-          git add -A
-          git commit -m "INT - Update Dependencies"
-          git push origin main
+      - name: Add and commit
+        uses: EndBug/add-and-commit@v9
+          author_email: "builder-lphxmjtnt11@axway.com"
+          author_name: "builder-lphxmjtnt11"
+          # git config --global push.followTags true
+          message: 'Update to SDK ${SDK_VERSION}'
+          push: true
+      # - name: Push
+      #   working-directory: .
+      #   run: |
+      #     git add -A
+      #     git commit -m "INT - Update Dependencies"
+      #     git push origin main
