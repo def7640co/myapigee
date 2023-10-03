@@ -23,6 +23,6 @@ jobs:
           go-version: 1.21
 
       - name: Build discovery agent
-        working-directory: discovery
+        working-directory: .
         run: |
           echo "would build and release the agent"

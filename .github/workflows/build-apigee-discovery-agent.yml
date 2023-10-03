@@ -15,6 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build discovery agent
-        working-directory: discovery
+        working-directory: .
         run: |
           echo "would build DA"

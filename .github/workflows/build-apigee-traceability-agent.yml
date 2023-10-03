@@ -15,6 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build traceability agent
-        working-directory: traceability
+        working-directory: .
         run: |
           echo "would build ta"

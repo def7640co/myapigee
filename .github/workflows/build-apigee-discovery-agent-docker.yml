@@ -17,6 +17,6 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Create commit_id & version files
-        working-directory: discovery
+        working-directory: .
         run: |
           echo "would build DA docker image"
