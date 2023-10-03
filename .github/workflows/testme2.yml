@@ -1,4 +1,4 @@
-# test 
+# test  
 name: Create tag for release
 
 on:
@@ -6,7 +6,6 @@ on:
     types:
       - closed
   
-
 jobs:
   debug:
     runs-on: ubuntu-latest

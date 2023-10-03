@@ -70,27 +70,21 @@ jobs:
           delete-branch: true
           reviewers: dfeldick
 
-      - uses: peter-evans/enable-pull-request-automerge@v3
-        with:
-          # token: ${{ secrets.PAT }}
-          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+      # - uses: peter-evans/enable-pull-request-automerge@v3
+      #   with:
+      #     pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
 
-      # - name: Configure git
-      #   run: |
-      #     git config --global user.email "dfeldick@axway.com"
-      #     git config --global user.name "dfeldick"
+      # - name: Approve Pull Request
+      #   uses: juliangruber/approve-pull-request-action@v2
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     number: ${{ steps.cpr.outputs.pull-request-number }}
+      #     # repo: juliangruber/approve-pull-request-action # optional          
 
-      - name: Approve Pull Request
-        uses: juliangruber/approve-pull-request-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ steps.cpr.outputs.pull-request-number }}
-          # repo: juliangruber/approve-pull-request-action # optional          
-
-      - name: Merge Pull Request
-        uses: juliangruber/merge-pull-request-action@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ steps.cpr.outputs.pull-request-number }}
-          method: squash
-          # repo: juliangruber/octokit-action          
+      # - name: Merge Pull Request
+      #   uses: juliangruber/merge-pull-request-action@v1
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     number: ${{ steps.cpr.outputs.pull-request-number }}
+      #     method: squash
+      #     # repo: juliangruber/octokit-action          
