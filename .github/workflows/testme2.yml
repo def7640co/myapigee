@@ -11,6 +11,8 @@ on:
 
 jobs:
   debug:
+    runs-on: ubuntu-latest
+    steps:
     - run: |
         echo "I'm here"
         echo "branch ${{ github.ref_name }}"
