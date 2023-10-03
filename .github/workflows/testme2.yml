@@ -1,10 +1,13 @@
 # test
-name: TESTME2
+name: Create tag for release
 
 on:
   pull_request:
+    branches:
+      - APIGOV-UpdateSDK
     types:
       - closed
+  
 
 jobs:
   if_merged:
