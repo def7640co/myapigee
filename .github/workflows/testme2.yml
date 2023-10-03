@@ -15,7 +15,9 @@ jobs:
     steps:
     - run: |
         echo "I'm here"
-        echo "branch ${{ github.ref_name }}"
+        echo "ref_name" ${{ github.ref_name }}"
+        echo "ref" ${{ github.ref }}"
+        echo "base_ref" ${{ github.base_ref }}"
   if_merged:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
