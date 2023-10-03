@@ -7,7 +7,6 @@ on:
       - APIGOV-UpdateSDK
     types:
       - closed
-  
 
 jobs:
   if_merged:
