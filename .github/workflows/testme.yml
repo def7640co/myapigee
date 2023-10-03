@@ -18,20 +18,8 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: 1.21
-      # - name: Configure git
-      #   run: |
-      #     git config --global user.email "builder-lphxmjtnt11@axway.com"
-      #     git config --global user.name "builder-lphxmjtnt11"
-      #     git config --global push.followTags true
 
-      # - name: Create branch
-      #   uses: peterjgrainger/action-create-branch@v2.4.0
-      # 
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     branch: 'APIGOV-00000'
-
-      - name: Get SDK version
+      - name: Get latest SDK version
         run: |
           export LATEST_REMOTE_TAG_CMD="git ls-remote --tags --refs --sort='version:refname' REMOTE_REPO | grep -Eo 'v?[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,3}$' | tail -1"
           REMOTE_REPO_PATH="https://github.com/Axway/agent-sdk"
@@ -39,7 +27,7 @@ jobs:
           export SDK_VERSION=$(eval $CMD)
           echo "SDK version ${SDK_VERSION}"
           echo "SDK_VERSION=${SDK_VERSION}" >> $GITHUB_ENV
-      - name: Update SDK version
+      - name: Update SDK version in go.mod
         working-directory: .
         run: |
           cat discovery/go.mod
@@ -47,15 +35,6 @@ jobs:
           echo "SDK_VERSION is ${{ env.SDK_VERSION }}"
           make dep-version sdk=v1.1.63
           cat discovery/go.mod
-
-      # - name: Add and commit
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     author_email: builder-lphxmjtnt11@axway.com
-      #     author_name: builder-lphxmjtnt11
-      #     new_branch: APIGOV-00000
-      #     message: 'Update to SDK ${SDK_VERSION}'
-      #     push: true
 
       - name: Create Pull Request
         id: cpr
@@ -70,6 +49,7 @@ jobs:
           delete-branch: true
           reviewers: dfeldick
 
+      # never could get approval and auto merge to work
       # - uses: peter-evans/enable-pull-request-automerge@v3
       #   with:
       #     pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
