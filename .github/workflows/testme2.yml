@@ -3,8 +3,8 @@ name: Create tag for release
 
 on:
   pull_request:
-    branches:
-      - "APIGOV-UpdateSDK"
+    # branches:
+    #   - "APIGOV-UpdateSDK"
     types:
       - closed
   
