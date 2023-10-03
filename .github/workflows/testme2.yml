@@ -15,6 +15,7 @@ jobs:
     steps:
     - run: |
         echo "I'm here"
+        echo "head_ref ${{ github.head_ref }}"
         echo "ref_name ${{ github.ref_name }}"
         echo "ref ${{ github.ref }}"
         echo "base_ref ${{ github.base_ref }}"
