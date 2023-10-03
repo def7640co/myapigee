@@ -3,12 +3,19 @@ name: Create tag for release
 
 on:
   pull_request:
-    branches:
-      - APIGOV-UpdateSDK
+    # branches:
+    #   - "APIGOV-UpdateSDK"
     types:
       - closed
+  
 
 jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "I'm here"
+        echo "branch ${{ github.ref_name }}"
   if_merged:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest

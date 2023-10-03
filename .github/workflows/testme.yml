@@ -26,7 +26,7 @@ jobs:
 
       # - name: Create branch
       #   uses: peterjgrainger/action-create-branch@v2.4.0
-      #   env:
+      # 
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       #   with:
       #     branch: 'APIGOV-00000'
@@ -45,7 +45,7 @@ jobs:
           cat discovery/go.mod
           echo "SDK_VERSION is ${SDK_VERSION}"
           echo "SDK_VERSION is ${{ env.SDK_VERSION }}"
-          make dep-version sdk=v1.1.62
+          make dep-version sdk=v1.1.61
           cat discovery/go.mod
 
       # - name: Add and commit
