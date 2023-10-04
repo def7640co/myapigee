@@ -41,4 +41,4 @@ jobs:
     #     body: ${{ steps.tag_version.outputs.changelog }}        
 
     call-workflow:
-      uses: .github/workflows/apigee-agents-release.yml
+      uses: ./.github/workflows/apigee-agents-release.yml
