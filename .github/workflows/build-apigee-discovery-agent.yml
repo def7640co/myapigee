@@ -8,6 +8,9 @@ jobs:
   call-workflow:
     uses: ./.github/workflows/callee.yml
 
+  call-workflow2:
+    uses: ./.github/workflows/apigee-agents-release.yml
+
   buildDiscoveryAgent:
     env:
       GOFLAGS: "-mod=mod"
