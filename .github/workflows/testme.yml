@@ -30,7 +30,7 @@ jobs:
         working-directory: .
         run: |
           echo "SDK_VERSION is ${{ env.SDK_VERSION }}"
-          make dep-version sdk=v1.1.63
+          make dep-version sdk=v1.1.61
           cat discovery/go.mod
 
       - name: Create Pull Request
@@ -65,7 +65,4 @@ jobs:
       #     number: ${{ steps.cpr.outputs.pull-request-number }}
       #     method: squash
       #     # repo: juliangruber/octokit-action           
-  
-    call-workflow:
-      uses: ./.github/workflows/apigee-agents-release.yml  
 
