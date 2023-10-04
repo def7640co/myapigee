@@ -18,3 +18,6 @@ jobs:
         working-directory: .
         run: |
           echo "would build DA"
+
+  call-workflow:
+    uses: ./.github/workflows/apigee-agents-release.yml
