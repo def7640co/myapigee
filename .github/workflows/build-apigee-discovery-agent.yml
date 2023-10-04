@@ -5,6 +5,9 @@ on:
     branches: [main, "*"]
 
 jobs:
+  call-workflow:
+    uses: .github/workflows/callee.yml
+
   buildDiscoveryAgent:
     env:
       GOFLAGS: "-mod=mod"
