@@ -31,7 +31,7 @@ jobs:
     - run: |
         echo "previous tag ${{ steps.tag_version.outputs.previous_tag }}
         echo "new tag ${{ steps.tag_version.outputs.new_tag }}
-        git push origin ${{ steps.tag_version.outputs.new_tag }}
+        git push origin ${{ github.ref_name }}
     
     # - name: Create a GitHub release
     #   uses: ncipollo/release-action@v1
