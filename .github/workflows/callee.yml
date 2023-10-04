@@ -1,0 +1,22 @@
+name: Reusable workflow example
+
+on:
+  - workflow_call
+    # inputs:
+    #   config-path:
+    #     required: true
+    #     type: string
+    # secrets:
+    #   token:
+    #     required: true
+
+jobs:
+  doit:
+    defaults:
+      run:
+        working-directory: .
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get latest SDK version
+        run: |
+          echo "holy crap"
