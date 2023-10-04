@@ -31,7 +31,6 @@ jobs:
     - run: |
         echo "previous tag ${{ steps.tag_version.outputs.previous_tag }}
         echo "new tag ${{ steps.tag_version.outputs.new_tag }}
-        echo "push LATEST_REMOTE_TAG_CMD/"REMOTE_REPO"
         git push origin ${{ steps.tag_version.outputs.new_tag }}
     
     # - name: Create a GitHub release
