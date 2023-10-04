@@ -25,15 +25,12 @@ jobs:
           REMOTE_REPO_PATH="https://github.com/Axway/agent-sdk"
           CMD=${LATEST_REMOTE_TAG_CMD/"REMOTE_REPO"/${REMOTE_REPO_PATH}}
           export SDK_VERSION=$(eval $CMD)
-          echo "SDK version ${SDK_VERSION}"
           echo "SDK_VERSION=${SDK_VERSION}" >> $GITHUB_ENV
       - name: Update SDK version in go.mod
         working-directory: .
         run: |
-          cat discovery/go.mod
-          echo "SDK_VERSION is ${SDK_VERSION}"
           echo "SDK_VERSION is ${{ env.SDK_VERSION }}"
-          make dep-version sdk=v1.1.62
+          make dep-version sdk=v1.1.61
           cat discovery/go.mod
 
       - name: Create Pull Request
@@ -41,8 +38,8 @@ jobs:
         uses: peter-evans/create-pull-request@v5.0.2
         with:
           # author: builder-lphxmjtnt11 <builder-lphxmjtnt11@axway.com>
-          author: dfeldick <dfeldick@axway.com>
-          committer: dfeldick <dfeldick@axway.com>
+          # author: dfeldick <dfeldick@axway.com>
+          # committer: dfeldick <dfeldick@axway.com>
           branch: APIGOV-UpdateSDK
           commit-message: 'Update to SDK ${{ env.SDK_VERSION }}'
           title: 'APIGOV-UpdateSDK - Update to SDK ${{ env.SDK_VERSION }}'
@@ -67,10 +64,4 @@ jobs:
       #     github-token: ${{ secrets.GITHUB_TOKEN }}
       #     number: ${{ steps.cpr.outputs.pull-request-number }}
       #     method: squash
-      #     # repo: juliangruber/octokit-action          
-  
-    call-workflow:
-      uses: .github/workflows/callee.yml
-
-    call-workflow2:
-      uses: .github/workflows/apigee-agents-release.yml  
+      #     # repo: juliangruber/octokit-action            

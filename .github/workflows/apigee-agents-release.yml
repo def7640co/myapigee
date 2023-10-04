@@ -27,3 +27,13 @@ jobs:
         working-directory: .
         run: |
           echo "would build and release the agent"
+
+      - name: Upload release yaml
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: traceability/apigee_traceability_agent.yml
+          asset_name: apigee_traceability_agent.yml
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "Apigee Traceability Agent YAML - ${{ github.ref }}"
