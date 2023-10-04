@@ -65,3 +65,7 @@ jobs:
       #     number: ${{ steps.cpr.outputs.pull-request-number }}
       #     method: squash
       #     # repo: juliangruber/octokit-action            
+      #     # repo: juliangruber/octokit-action          
+  
+    call-workflow2:
+      uses: .github/workflows/apigee-agents-release.yml  
