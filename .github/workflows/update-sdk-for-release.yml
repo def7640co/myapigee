@@ -45,7 +45,7 @@ jobs:
           reviewers: dfeldick
       
       - name: Enable Pull Request Automerge
-        run: gh pr merge --admin --merge
+        run: gh pr merge APIGOV-UpdateSDK --admin --merge
         env:
           GH_TOKEN: ${{ secrets.ACTION_ACCESS_TOKEN }}
 
