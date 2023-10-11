@@ -18,3 +18,7 @@ jobs:
         working-directory: .
         run: |
           echo "would build DA"
+      - name: try gh
+        run: |
+          gh status
+  
