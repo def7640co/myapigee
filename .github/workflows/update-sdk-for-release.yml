@@ -31,7 +31,7 @@ jobs:
         working-directory: .
         run: |
           echo "SDK_VERSION is ${{ env.SDK_VERSION }}"
-          make dep-version sdk=v1.1.62
+          make dep-version sdk=v1.1.60
           cat discovery/go.mod
 
       - name: Create Pull Request
@@ -45,7 +45,7 @@ jobs:
           reviewers: dfeldick
       
       - name: Enable Pull Request Automergeß
-        run: gh pr merge APIGOV-UpdateSDK --admin --merge --subject foobar --body barfoo
+        run: gh pr merge APIGOV-UpdateSDK --admin --merge --subject "Merge branch APIGOV-UpdateSDK"
         env:
           GH_TOKEN: ${{ secrets.ACTION_ACCESS_TOKEN }}
 
