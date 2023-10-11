@@ -16,7 +16,7 @@ variables:
 
   GIT_TAG_PREFIX: v
 
-  # these needed for go workspace
+  # these needed for go workspace 
   GOWORK: ${CI_PROJECT_DIR}/go.work
   GOFLAGS: "-mod=readonly"
 
