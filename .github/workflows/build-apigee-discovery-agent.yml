@@ -16,11 +16,9 @@ jobs:
     steps:
       - name: Build discovery agent
         working-directory: .
-        run: |
-          echo "would build DA"
-      - name: try gh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          echo "would build DA"
           gh --version
   
