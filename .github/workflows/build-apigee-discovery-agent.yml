@@ -19,6 +19,8 @@ jobs:
         run: |
           echo "would build DA"
       - name: try gh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh status
+          gh --version
   
