@@ -45,7 +45,7 @@ jobs:
           reviewers: dfeldick
       
       - name: Enable Pull Request Automerge
-        run: gh pr --admin merge --merge --auto "1"
+        run: gh pr merge --admin --merge --auto "1"
         env:
           GH_TOKEN: ${{ secrets.ACTION_ACCESS_TOKEN }}
 
