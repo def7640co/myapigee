@@ -31,7 +31,7 @@ jobs:
         working-directory: .
         run: |
           echo "SDK_VERSION is ${{ env.SDK_VERSION }}"
-          make dep-version sdk=v1.1.62
+          make dep-version sdk=v1.1.59
           cat discovery/go.mod
 
       - name: Create Pull Request
@@ -43,6 +43,11 @@ jobs:
           title: 'APIGOV-UpdateSDK - Update to SDK ${{ env.SDK_VERSION }}'
           delete-branch: true
           reviewers: dfeldick
+      
+      - name: Enable Pull Request Automerge
+        run: gh pr --admin merge --merge --auto "1"
+        env:
+          GH_TOKEN: ${{ secrets.ACTION_ACCESS_TOKEN }}
 
       # Tried these, but never could get approval and auto merge to work. Keeping them here in case someone
       # wants to dig into it later.
