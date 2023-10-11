@@ -49,7 +49,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.ACTION_ACCESS_TOKEN }}
 
-      # Tried these, but never could get approval and auto merge to work. Keeping them here in case someone
+      #  Tried these, but never could get approval and auto merge to work. Keeping them here in case someone
       # wants to dig into it later.
       # - uses: peter-evans/enable-pull-request-automerge@v3
       #   with:
