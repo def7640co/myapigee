@@ -3,7 +3,7 @@ name: Release Apigee Agents
 on:
   push:
     tags:
-      - "*foo"
+      - "*"
 
 jobs:
   buildDiscoveryAgent:
